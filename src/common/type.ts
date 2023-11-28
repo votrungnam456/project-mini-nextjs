@@ -5,9 +5,11 @@ type TProduct = {
   id: number;
   name: string;
   price: string;
-  redirect?: string;
   image: string;
 }
 type TCardProduct = {
   product: TProduct
+}
+type THeader = {
+  idMenu: number;
 }
