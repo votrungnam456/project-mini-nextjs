@@ -1,20 +1,28 @@
 "use client";
-import Menu from "@/components/home/menu";
 import CardProduct from "@/components/products/cardProduct";
-import { useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import Header from "@/components/home/header";
 import { product } from "@/common/contants";
+import { localStorageHandle } from "@/common/function";
 export default function ListProduct() {
-  const [listProduct, setListProduct] = useState(product);
+  const [listProduct, setListProduct] = useState<TProduct[]>(product);
+  const [cartList, setCartList] = useState<TCartList[]>([]);
 
+  useEffect(() => {
+    setCartList(localStorageHandle("get", "cartList") ?? []);
+  }, []);
   const renderListProduct = listProduct.map((item, index) => {
-    return <CardProduct key={index} product={item}></CardProduct>;
+    return (
+      <CardProduct
+        setCartList={(data: TCartList[]) => setCartList(data)}
+        key={index}
+        product={item}
+      ></CardProduct>
+    );
   });
-
   return (
     <div>
-      <Header idMenu={2}></Header>
+      <Header cartList={cartList} idMenu={2}></Header>
       <div className=" flex justify-around flex-wrap">{renderListProduct}</div>
     </div>
   );

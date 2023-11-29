@@ -3,9 +3,11 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { localStorageHandle } from "@/common/function";
 
 export default function CardProduct(props: TCardProduct) {
-  const { name, price, image, id } = props.product;
+  const { product, setCartList } = props;
+  const { name, price, image, id } = product;
   const router = useRouter();
   const handleClick = (type: string) => {
     switch (type) {
@@ -13,28 +15,27 @@ export default function CardProduct(props: TCardProduct) {
         router.push("/product/item?id=" + id);
         break;
       case "BUY":
-        const temp: any = localStorage.getItem("cartList")
-          ? JSON.parse(localStorage.getItem("cartList") ?? "")
+        const temp: any = localStorageHandle("get", "cartList")
+          ? localStorageHandle("get", "cartList")
           : [];
-        console.log(temp);
         if (temp) {
           const index = temp.findIndex((item: any) => item.id === id);
           if (index === -1) {
             temp.push({
               id,
-              quality: 1,
+              quantity: 1,
             });
           } else {
-            temp[index].quality += 1;
+            temp[index].quantity += 1;
           }
         } else {
           temp.push({
             id,
-            quality: 1,
+            quantity: 1,
           });
         }
-
-        localStorage.setItem("cartList", JSON.stringify(temp));
+        localStorageHandle("set", "cartList", temp);
+        setCartList(temp);
         break;
       default:
         break;

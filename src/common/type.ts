@@ -9,7 +9,13 @@ type TProduct = {
 }
 type TCardProduct = {
   product: TProduct
+  setCartList: (data: TCartList[]) => void
+}
+type TCartList = {
+  id: number;
+  quantity: number;
 }
 type THeader = {
   idMenu: number;
+  cartList?: TCartList[];
 }

@@ -17,7 +17,6 @@ const product = [
     price: "10000",
     image:
       "https://sanbox-integration.foloosi.com/wp-content/uploads/2022/12/istockphoto-491520707-612x612-1.jpeg",
-    redirect: "/item?id=1",
   },
   {
     id: 2,
@@ -25,7 +24,6 @@ const product = [
     price: "210000",
     image:
       "https://sanbox-integration.foloosi.com/wp-content/uploads/2022/12/istockphoto-491520707-612x612-1.jpeg",
-    redirect: "/item?id=2",
   },
 ]
 
