@@ -1,16 +1,16 @@
 import Menu from "@/components/home/menu";
+import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
 
 export default function Header(props: THeader) {
-  const { idMenu, cartList } = props;
+  const { idMenu } = props;
+  const cart = useAppSelector((state) => state.cart);
   const quantityProduct = () => {
-    if (cartList && cartList.length > 0) {
+    if (cart.items && cart.items.length > 0) {
       let sum = 0;
-      cartList.forEach((item) => {
-        console.log(item.quantity);
+      cart.items.forEach((item) => {
         sum += item.quantity;
       });
-      console.log(sum);
       return sum;
     } else {
       return 0;

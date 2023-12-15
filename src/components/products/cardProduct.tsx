@@ -4,38 +4,21 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { localStorageHandle } from "@/common/function";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { addItem } from "@/redux/feature/cartSlice";
 
 export default function CardProduct(props: TCardProduct) {
+  const dispatch = useAppDispatch();
   const { product, setCartList } = props;
   const { name, price, image, id } = product;
   const router = useRouter();
-  const handleClick = (type: string) => {
+  const handleClick = async (type: string) => {
     switch (type) {
       case "ITEM":
         router.push("/product/item?id=" + id);
         break;
       case "BUY":
-        const temp: any = localStorageHandle("get", "cartList")
-          ? localStorageHandle("get", "cartList")
-          : [];
-        if (temp) {
-          const index = temp.findIndex((item: any) => item.id === id);
-          if (index === -1) {
-            temp.push({
-              id,
-              quantity: 1,
-            });
-          } else {
-            temp[index].quantity += 1;
-          }
-        } else {
-          temp.push({
-            id,
-            quantity: 1,
-          });
-        }
-        localStorageHandle("set", "cartList", temp);
-        setCartList(temp);
+        await dispatch(addItem(product));
         break;
       default:
         break;
