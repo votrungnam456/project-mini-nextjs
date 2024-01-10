@@ -33,7 +33,7 @@ export default function ItemProduct() {
   };
   return (
     <div>
-      <Header idMenu={2} cartList={cartList}></Header>
+      <Header idMenu={2}></Header>
 
       <button
         onClick={() => handleClick("GO_BACK")}

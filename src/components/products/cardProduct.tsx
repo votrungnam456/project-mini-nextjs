@@ -9,7 +9,7 @@ import { addItem } from "@/redux/feature/cartSlice";
 
 export default function CardProduct(props: TCardProduct) {
   const dispatch = useAppDispatch();
-  const { product, setCartList } = props;
+  const { product } = props;
   const { name, price, image, id } = product;
   const router = useRouter();
   const handleClick = async (type: string) => {
