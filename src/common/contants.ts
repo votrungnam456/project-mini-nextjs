@@ -26,5 +26,16 @@ const product = [
       "https://sanbox-integration.foloosi.com/wp-content/uploads/2022/12/istockphoto-491520707-612x612-1.jpeg",
   },
 ]
-
-export { menu, product };
+const loginList = [
+  {
+    id: 1,
+    username: 'user1',
+    password: '123',
+  },
+  {
+    id: 2,
+    username: 'user2',
+    password: '123',
+  }
+]
+export { menu, product, loginList };

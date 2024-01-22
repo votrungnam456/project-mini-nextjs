@@ -19,8 +19,20 @@ type THeader = {
 interface CartState {
   items: TCartList[];
 }
+interface AuthState {
+  loginInfo?: {
+    id: number,
+    username: string,
+  },
+  isLogin: boolean,
+  isErrorLogin: boolean,
+}
+type TLoginAccount = {
+  username: string;
+  password: string;
+}
 type TChangeQuantityPayload = {
-  id:number;
-  quantity:number;
-  typeChange:number;
+  id: number;
+  quantity: number;
+  typeChange: number;
 }

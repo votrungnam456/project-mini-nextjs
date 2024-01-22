@@ -38,9 +38,9 @@ const cartSlice = createSlice({
             }
             break;
           case 0:
-            if(quantity !== 0){
+            if (quantity !== 0) {
               state.items[index].quantity = quantity;
-            }else{
+            } else {
               state.items.splice(index, 1);
             }
             break;
@@ -50,9 +50,6 @@ const cartSlice = createSlice({
         }
       }
     },
-    // changeQuantity: (state, action: PayloadAction<TChangeQuantityPayload>) = {
-    //   state
-    // },
   },
 });
 

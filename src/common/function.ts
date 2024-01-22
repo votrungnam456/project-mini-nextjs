@@ -131,6 +131,16 @@ const notification = async ({ type = 'success', message = '', duration = 1000, c
     }, duration + 600);
   }
 };
+
+const isNumber = (data: any) => {
+  return !isNaN(data);
+}
+const formatMoney = (value: number): string => {
+  return value.toLocaleString("vi-VN", {
+    style: "currency",
+    currency: "VND",
+  });
+};
 export {
-  localStorageHandle, sessionStorageHandle, notification, querify, queryify, scrollToTop
+  localStorageHandle, sessionStorageHandle, notification, querify, queryify, scrollToTop, isNumber, formatMoney
 }
