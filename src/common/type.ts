@@ -16,3 +16,11 @@ type TCartList = TProduct & {
 type THeader = {
   idMenu: number;
 };
+interface CartState {
+  items: TCartList[];
+}
+type TChangeQuantityPayload = {
+  id:number;
+  quantity:number;
+  typeChange:number;
+}

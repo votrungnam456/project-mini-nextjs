@@ -1,6 +1,7 @@
 import Menu from "@/components/home/menu";
 import { useAppSelector } from "@/redux/hooks";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Header(props: THeader) {
   const { idMenu } = props;
@@ -21,11 +22,11 @@ export default function Header(props: THeader) {
       <div>
         <Menu idMenu={idMenu}></Menu>
       </div>
-      <div>
-        <div className="p-[0.625rem] border-[0.0625rem] border-black border-solid w-[12.5rem] text-center cursor-pointer hover:bg-blue-300">
+      <Link href="/cart">
+        <div className={"p-[0.625rem] border-[0.0625rem] border-black border-solid w-[12.5rem] text-center cursor-pointer hover:bg-blue-300" + (idMenu === 3 ? " bg-green-400" : "")}>
           Cart ({quantityProduct()})
         </div>
-      </div>
+      </Link>
     </div>
   );
 }
