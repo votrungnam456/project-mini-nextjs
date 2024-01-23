@@ -1,10 +1,15 @@
 "use client";
+import { login } from "@/redux/feature/authSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { redirect, useRouter } from "next/navigation";
 import { useState, ChangeEvent, FormEvent } from "react";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useAppDispatch();
+  const isErrorLogin = useAppSelector((state) => state.auth).isErrorLogin;
+  const router = useRouter();
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
     setUsername(e.target.value);
   };
@@ -13,9 +18,14 @@ export default function Login() {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Perform login logic here
+    const params = {
+      username,
+      password,
+    };
+    await dispatch(login(params));
+    router.push("/");
   };
 
   return (
@@ -47,6 +57,13 @@ export default function Login() {
           Login
         </button>
       </form>
+      {isErrorLogin ? (
+        <div className="text-red-600">
+          <p>Wrong username/pasword, please try again</p>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
