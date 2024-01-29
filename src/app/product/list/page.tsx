@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import Header from "@/components/home/header";
 import { product } from "@/common/contants";
 import { localStorageHandle } from "@/common/function";
-export default function ListProduct() {
+import isAuth from "@/components/auth/isAuth";
+function ListProduct() {
   const [listProduct, setListProduct] = useState<TProduct[]>(product);
 
   const renderListProduct = listProduct.map((item, index) => {
@@ -17,3 +18,4 @@ export default function ListProduct() {
     </div>
   );
 }
+export default isAuth(ListProduct);

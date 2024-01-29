@@ -141,6 +141,9 @@ const formatMoney = (value: number): string => {
     currency: "VND",
   });
 };
+const isObjectEmpty = (obj: object): boolean => {
+  return Object.keys(obj).length === 0;
+}
 export {
-  localStorageHandle, sessionStorageHandle, notification, querify, queryify, scrollToTop, isNumber, formatMoney
+  localStorageHandle, sessionStorageHandle, notification, querify, queryify, scrollToTop, isNumber, formatMoney, isObjectEmpty
 }

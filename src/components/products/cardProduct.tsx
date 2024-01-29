@@ -15,7 +15,7 @@ export default function CardProduct(props: TCardProduct) {
   const handleClick = async (type: string) => {
     switch (type) {
       case "ITEM":
-        router.push("/product/item?id=" + id);
+        router.push("/product/" + id);
         break;
       case "BUY":
         await dispatch(addItem(product));

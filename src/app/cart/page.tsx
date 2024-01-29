@@ -4,7 +4,8 @@ import { formatMoney, isNumber, localStorageHandle } from "@/common/function";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import Header from "@/components/home/header";
 import { changeQuantity } from "@/redux/feature/cartSlice";
-export default function Cart() {
+import isAuth from "@/components/auth/isAuth";
+function Cart() {
   const dispatch = useAppDispatch();
   const cart = useAppSelector((state) => state.cart);
 
@@ -136,3 +137,4 @@ export default function Cart() {
     </div>
   );
 }
+export default isAuth(Cart);
