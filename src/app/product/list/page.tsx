@@ -18,4 +18,4 @@ function ListProduct() {
     </div>
   );
 }
-export default isAuth(ListProduct);
+export default ListProduct;

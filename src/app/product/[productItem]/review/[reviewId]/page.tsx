@@ -6,6 +6,10 @@ import { product } from "@/common/contants";
 import { isObjectEmpty, localStorageHandle } from "@/common/function";
 import { notFound, useRouter } from "next/navigation";
 import isAuth from "@/components/auth/isAuth";
+
+const randomInt = (count: number) => {
+  return Math.floor(Math.random() * count);
+};
 function ReviewItemProduct({
   params,
 }: {
@@ -28,9 +32,11 @@ function ReviewItemProduct({
       notFound();
     }
     setItemProduct(temp);
-
-    console.log(temp);
-    console.log(itemProduct);
+    const rand = randomInt(2);
+    console.log(rand);
+    if (rand === 0) {
+      throw new Error("Error loading review");
+    }
   }, []);
   const handleClick = (type: string) => {
     switch (type) {
@@ -61,4 +67,4 @@ function ReviewItemProduct({
   );
 }
 
-export default isAuth(ReviewItemProduct);
+export default ReviewItemProduct;

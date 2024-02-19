@@ -137,4 +137,4 @@ function Cart() {
     </div>
   );
 }
-export default isAuth(Cart);
+export default Cart;

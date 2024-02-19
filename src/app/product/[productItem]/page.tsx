@@ -61,4 +61,4 @@ function ProductItem({ params }: { params: { productItem: string } }) {
   );
 }
 
-export default isAuth(ProductItem);
+export default ProductItem;
