@@ -19,11 +19,11 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   const [input, setInput] = useState("");
-  const rand = randomInt(2);
-  console.log(rand);
-  if (rand === 0) {
-    throw new Error("Error loading auth");
-  }
+  // const rand = randomInt(2);
+  // console.log(rand);
+  // if (rand === 0) {
+  //   throw new Error("Error loading auth");
+  // }
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
   };

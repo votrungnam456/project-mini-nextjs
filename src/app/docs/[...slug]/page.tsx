@@ -5,6 +5,6 @@ export default function Docs({
     slug: string[];
   };
 }) {
-  console.log(params.slug);
+  console.log(params.slug.length);
   return <h1>Return homepage Docs</h1>;
 }

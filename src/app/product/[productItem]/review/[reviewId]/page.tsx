@@ -32,11 +32,11 @@ function ReviewItemProduct({
       notFound();
     }
     setItemProduct(temp);
-    const rand = randomInt(2);
-    console.log(rand);
-    if (rand === 0) {
-      throw new Error("Error loading review");
-    }
+    // const rand = randomInt(2);
+    // console.log(rand);
+    // if (rand === 0) {
+    //   throw new Error("Error loading review");
+    // }
   }, []);
   const handleClick = (type: string) => {
     switch (type) {
